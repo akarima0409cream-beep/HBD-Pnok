@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday P'NOK 💙</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffd6ec,#d7f0ff);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+#giftScreen{
+text-align:center;
+}
+
+.gift{
+font-size:120px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-15px);}
+}
+
+.title{
+font-size:32px;
+font-weight:bold;
+color:#ff4d94;
+}
+
+.subtitle{
+margin-top:10px;
+font-size:20px;
+}
+
+#countdown{
+display:none;
+font-size:120px;
+font-weight:bold;
+color:white;
+text-shadow:0 0 20px hotpink;
+}
+
+#main{
+display:none;
+width:100%;
+height:100vh;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:absolute;
+top:0;
+left:0;
+padding:20px;
+overflow:auto;
+}
+
+.slider{
+width:320px;
+height:420px;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+background:white;
+}
+
+.slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.message{
+margin-top:15px;
+max-width:700px;
+max-height:30vh;
+overflow-y:auto;
+padding:20px;
+background:rgba(255,255,255,.8);
+border-radius:20px;
+font-size:18px;
+line-height:1.6;
+text-align:center;
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+animation:float 6s linear forwards;
+pointer-events:none;
+}
+
+@keyframes float{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+.firework{
+position:absolute;
+font-size:50px;
+animation:boom 1s forwards;
+}
+
+@keyframes boom{
+0%{
+transform:scale(0);
+opacity:1;
+}
+100%{
+transform:scale(2);
+opacity:0;
+}
+}
+
+#ending{
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="giftScreen">
+<div class="gift" onclick="startSurprise()">🎁</div>
+<div class="title">Happy Birthday P'NOK 💖💛💗🎂🎈</div>
+<div class="subtitle">กดเปิดของขวัญได้เลยคั้บพี่คนสวย 😊</div>
+</div>
+
+<div id="countdown"></div>
+
+<div id="main">
+
+<img id="slide"
+src="photo1.jpg"
+style="
+width:320px;
+height:420px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+">
+
+<div class="message">
+วันนี้เป็นอีกหนึ่งวันที่โลกได้ฉลองการมีอยู่ของพี่ 💙<br><br>
+
+ขอให้ปีนี้เต็มไปด้วยรอยยิ้ม ความสุข สุขภาพที่แข็งแรง
+และเรื่องราวดี ๆ ที่พี่รอคอย<br><br>
+
+
+ขอบคุณสำหรับทุกเสียงหัวเราะ
+ทุกบทสนทนา และทุกช่วงเวลาที่ได้ใช้ร่วมกัน<br><br>
+
+ขอพระเจ้าอวยพรในทุกคำอธิษฐานของพี่นกนะคะ<br><br>
+
+ขอให้พี่นกได้พบกับสิ่งดี ๆ
+มีคนที่รักและเห็นคุณค่าในตัวพี่มาก ๆ<br><br>
+
+และไม่ว่าจะมีเรื่องราวอะไรเข้ามา
+ขอให้พี่นกยังยิ้มได้เหมือนเดิมนะคะ 😊<br><br>
+
+สุขสันต์วันเกิดนะคั้บพี่คนสวย 🎂💖💛🎈
+</div>
+
+<audio id="music">
+<source src="best-part.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<div id="videoSection" style="
+display:none;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+background:black;
+position:absolute;
+top:0;
+left:0;
+">
+
+<video id="birthdayVideo"
+width="90%"
+height="90%"
+controls
+playsinline
+muted>
+
+<source src="birthday.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+<div id="ending">
+    <h1>🎂 Happy Birthday</h1>
+    <h2>P'NOK 💙</h2>
+
+    <p>
+    Thank you for being<br>
+    the best part.
+    </p>
+
+    <div class="from">
+        From CREAM
+    </div>
+</div>
+
+<script>
+
+const photos=[
+"photo1.jpg",
+"photo2.jpg",
+"photo3.jpg",
+"photo4.jpg",
+"photo5.jpg",
+"photo6.jpg",
+"photo7.jpg",
+"photo8.jpg",
+"photo9.jpg",
+"photo10.jpg",
+"photo11.jpg",
+"photo12.jpg",
+"photo13.jpg",
+"photo14.jpg",
+"photo15.jpg",
+"photo16.jpg",
+"photo17.jpg",
+"photo18.jpg",
+"photo19.jpg",
+"photo20.jpg",
+"photo21.jpg",
+"photo22.jpg",
+"photo23.jpg",
+"photo24.jpg",
+"photo25.jpg",
+"photo26.jpg",
+"photo27.jpg",
+"photo28.jpg",
+"photo29.jpg",
+"photo30.jpg",
+"photo31.jpg",
+"photo32.jpg",
+"photo33.jpg",
+"photo34.jpg",
+"photo35.jpg",
+"photo36.jpg",
+];
+
+let current=0;
+let slideInterval;
+
+function startSurprise(){
+
+document.getElementById("giftScreen").style.display="none";
+
+const countdown=document.getElementById("countdown");
+countdown.style.display="block";
+
+let n=3;
+
+countdown.innerHTML=n;
+
+const timer=setInterval(()=>{
+
+n--;
+
+if(n>0){
+countdown.innerHTML=n;
+}else if(n===0){
+countdown.innerHTML="🎂";
+}else{
+
+clearInterval(timer);
+
+countdown.style.display="none";
+
+launchFireworks();
+
+setTimeout(()=>{
+
+document.getElementById("main").style.display="flex";
+
+
+document.getElementById("music").play().catch(()=>{});   
+
+slideInterval = setInterval(changePhoto,3000);
+
+setInterval(createHeart,250);
+
+},1200);
+}
+
+},1000);
+}
+
+function changePhoto(){
+
+current++;
+
+if(current >= photos.length){
+
+clearInterval(slideInterval);
+
+document.getElementById("main").style.display="none";
+
+const videoSection =
+document.getElementById("videoSection");
+
+videoSection.style.display="flex";
+
+const video =
+document.getElementById("birthdayVideo");
+
+video.play();
+
+video.onended = () => {
+
+videoSection.style.display="none";
+
+document.getElementById("ending").style.display="flex";
+
+};
+
+return;
+}
+
+document.getElementById("slide").src = photos[current];
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+const hearts=["💖","🎂","💗","💛","🎈"];
+
+heart.innerHTML=
+hearts[Math.floor(Math.random()*hearts.length)];
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.bottom="-20px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+}
+
+function launchFireworks(){
+  for(let i=0;i<30;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML=["🎆","✨","🎇"][Math.floor(Math.random()*3)];
+
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+
+    document.body.appendChild(f);
+
+    setTimeout(()=>{
+      f.remove();
+    },1000);
+  }
+}
+</script>
+
+</body>
+</html>
